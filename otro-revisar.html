@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function * throttle(func, time) {
+  let timerID = null;
+  function throttled(arg) {
+    clearTimeout(timerID);
+    timerID = setTimeout(func.bind(window, arg), time);
+  }
+  while (true)
+    throttled(yield);
+}
+
+const thr = throttle(console.log, 1000);
+
+thr.next(); // {value: undefined, done: false}
+thr.next('hello'); // {value: undefined, done: false} + 1s after -> 'hello'
+    </script>
+</body>
+</html>

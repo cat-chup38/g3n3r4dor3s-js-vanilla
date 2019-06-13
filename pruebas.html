@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+
+        ///////////////////////////////////////////////
+
+        // revisar primero: https://codeburst.io/what-are-javascript-generators-and-how-to-use-them-c6f2713fd12e
+        // revisar segundo: 
+
+
+        /////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////
+//  primera forma de mostrar fibonacci
+///////////////////////////////////////////////////////////////////////////////////////
+/*
+    function* fibonacci() { // una función generador
+
+        let [prev, actual] = [0, 1];
+        
+
+        while (true) {
+            [prev, actual] = [actual, prev + actual];
+            console.log(actual)
+            yield null;
+            console.log("nnnnnnnnnnnnnnnn");
+        }
+
+        
+    }
+
+    
+    var fib = fibonacci();
+
+    fib.next();
+    fib.next();
+    fib.next();
+    fib.next();
+    fib.next();
+    
+*/
+
+///////////////////////////////////////////////////////////////////////////////////////
+//  segunda forma de mostrar fibonacci con limite para seguir el bucle RETORNANDO YIELD
+///////////////////////////////////////////////////////////////////////////////////////
+
+    function* fibonacci() { // una función generador
+
+        let [prev, actual] = [0, 1];
+        
+
+        while (actual<3) {
+            [prev, actual] = [actual, prev + actual];
+            
+            yield actual;
+            console.log("adentrooooo");
+        }
+
+        console.log("afueraaaaaa");
+
+        
+    }
+
+    
+    var fib = fibonacci();
+
+    console.log(fib.next().value);
+    console.log(fib.next().value);
+    console.log(fib.next().value);
+    console.log(fib.next().value);
+    console.log(fib.next().value);
+    
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//  tercera forma de mostrar fibonacci
+///////////////////////////////////////////////////////////////////////////////////////
+
+/*
+function* fibonacci() { // una función generador
+  let [prev, actual] = [0, 1];
+  while (true) {
+    [prev, actual] = [actual, prev + actual];
+    yield actual;
+  }
+  
+}
+
+for (let n of fibonacci()) {
+  console.log(n);
+  // interrumpir la secuencia en 1000
+  if (n >= 200) {
+    break;
+  }
+}
+*/
+
+
+    </script>
+</body>
+</html>

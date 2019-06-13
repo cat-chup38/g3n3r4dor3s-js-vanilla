@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //revisar https://codeburst.io/what-are-javascript-generators-and-how-to-use-them-c6f2713fd12e
+
+        function * anotherGenerator(i) {
+  yield i + 1;
+  yield i + 2;
+  yield i + 3;
+}
+
+function * generator(i) {
+  yield* anotherGenerator(i);
+}
+
+var gen = generator(1);
+
+gen.next().value; // 2
+gen.next().value; // 3
+gen.next().value; // 4
+    </script>
+</body>
+</html>
